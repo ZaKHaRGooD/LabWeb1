@@ -1,0 +1,260 @@
+body {
+    font-family: monospace;
+    font-size: 1.0rem;
+    margin: 1px;
+
+}
+
+h2 {
+    margin: 4px;
+}
+
+
+
+table {
+    width: 90%;
+    font-family: serif;
+    font-size: inherit;
+}
+
+table h2 {
+    margin: auto 10%;
+}
+
+::selection {
+    background: #fabf4d;
+}
+
+input::placeholder {
+    color: #ffc700;
+    font-size: 1.2em;
+    font-family: serif;
+    /*border: 3px double #00e0ff;*/
+}
+
+.container {
+    width: 100%;
+    min-height: 86vh;
+    /*padding: 20px;*/
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.main-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1%;
+}
+
+.desc {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: serif;
+    color: #141414;
+}
+
+.desc h1 {
+    margin: 5px;
+}
+
+.container .graph {
+    border: 3px double #00e0ff;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 440px;
+    text-align: center;
+}
+
+.container .graph svg {
+    stroke: rgba(0, 0, 0, 0.92);
+    fill: #00e0ff;
+    font-size: 0.9rem;
+}
+
+.container text {
+    fill: #141414;
+}
+
+.user-input {
+    text-align: center;
+    border: 3px double #00e0ff;
+    background-color: #ffffff;
+    border-radius: 15px;
+    width: 40%;
+    min-width: 450px;
+    max-width: 500px;
+    max-height: 340px;
+    height: fit-content;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.values {
+    width: 100%;
+}
+
+#x-values {
+    font-size: 1rem;
+}
+
+#r-values {
+    font-size: 1rem;
+}
+
+.x-values input, .r-values input {
+    display: none;
+    padding: 5%;
+}
+
+.x-values label, .r-values label {
+    display: inline-block;
+    cursor: pointer;
+    width: 40px;
+    line-height: 32px;
+    border: 3px double #00e0ff;
+    border-radius: 10px;
+    user-select: none;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+/* Checked */
+.x-values input[type=checkbox]:checked + label, .r-values input[type=checkbox]:checked + label {
+    background: #00e0ff;
+    color: #f8f9fb;
+}
+
+/* Hover */
+.x-values label:hover, .r-values label:hover {
+    color: #ffc700;
+}
+
+/* Disabled */
+.x-values input[type=checkbox]:disabled + label, .r-values input[type=checkbox]:disabled + label {
+    background: #e0e0e0;
+    color: #666;
+}
+
+#y-value {
+    width: 90%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border: 3px double #00e0ff;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-family: serif;
+    font-size: inherit;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    outline: none;
+}
+
+.buttons input {
+    font-family: serif;
+    font-size: 130%;
+    color: white;
+    border: 1px solid #141414;
+    border-radius: 10px;
+    width: 30%;
+    background-color: #141414;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    cursor: pointer;
+}
+
+.table {
+    display: flex;
+    position: relative;
+    margin: 0;
+}
+
+#clean-table-button {
+    border: 1px double rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0px 0px 10px;
+    cursor: pointer;
+}
+
+#table {
+    font-family: serif;
+    font-size: 130%;
+    color: #000000;
+    background-color: #ffffff;
+    width: 80%;
+    height: 80%;
+    border: 3px double #00e0ff;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 3%;
+    margin-bottom: 1%;
+    margin-top: 0;
+}
+
+.pop_up {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    z-index: 2;
+    transform: translateX(28.5%) translateY(-7.5%) scale(0);
+    transition: .3s ease-in-out;
+}
+
+.pop_up.active {
+    transform: translateY(0%) translateX(0%) scale(100%);
+    background-color: rgba(0, 0, 0, 75%);
+}
+
+.pop_up_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.pop_up_body {
+    margin: auto;
+    width: 500px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    text-align: center;
+    padding: 110px 15px 110px 15px;
+    position: relative;
+}
+
+.pop_up_body p {
+    font-size: 20px;
+    font-family: serif;
+    font-weight: 600;
+    color: #141414;
+    margin-bottom: 40px;
+}
+
+.close_pop_up {
+    position: absolute;
+    right: 15px;
+    top: -20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close_pop_up p {
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    font-family: serif;
+    font-weight: 600;
+    color: #141414;
+}

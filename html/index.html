@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Шевченко Захар - P32141</title>
+    <link rel="stylesheet" type="text/css" href="../resource/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/Cleaner.js"></script>
+    <script src="../js/SetR.js"></script>
+</head>
+<body>
+<div class="container">
+    <header class="desc">
+        <table>
+            <tr>
+                <td><h1>Лабораторная работа №1</h1></td>
+                <td><h2>автор</h2></td>
+                <td><h2>группа</h2></td>
+                <td><h2>вариант</h2></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><h2>Шевченко Захар</h2></td>
+                <td><h2>P32141</h2></td>
+                <td><h2>1522</h2></td>
+            </tr>
+        </table>
+    </header>
+    <section class="main-panel">
+
+        <div class="graph">
+            <svg width="400px" height="400px">
+                <!-- Координатные оси -->
+                <line x1="0" x2="400" y1="200" y2="200"></line>
+                <line x1="200" x2="200" y1="0" y2="400"></line>
+                <!--Стрелки-->
+                <polygon points="200,0 193,20 207,20" stroke="black"></polygon>
+                <polygon points="400,200 375,193 375,207" stroke="black"></polygon>
+                <!--Прямоугольник в четвертой четверти-->
+                <polygon points="50 200, 200 200, 200 275, 50 275"></polygon>
+                <path d="M 200 275 A 80 80 90 0 0 275 200 L 200 200 Z"></path>
+                <!--Треугольник во второй четверти-->
+                <polygon points="200 50, 200 200, 275 200"></polygon>
+                <!-- Подписи к осям -->
+                <text x="390" y="220" text-anchor="middle">X</text>
+                <text x="180" y="10" text-anchor="start">Y</text>
+                <!-- Метки для значений R на оси X -->
+                <line x1="50" x2="50" y1="193" y2="207"></line>
+                <line x1="125" x2="125" y1="193" y2="207"></line>
+                <line x1="275" x2="275" y1="193" y2="207"></line>
+                <line x1="350" x2="350" y1="193" y2="207"></line>
+                <!-- Метки для значений R на оси Y -->
+                <line x1="193" x2="207" y1="50" y2="50"></line>
+                <line x1="193" x2="207" y1="125" y2="125"></line>
+                <line x1="193" x2="207" y1="275" y2="275"></line>
+                <line x1="193" x2="207" y1="350" y2="350"></line>
+                <!-- Значения R на оси X -->
+                <text x="50" y="220" text-anchor="middle" id="-r">-R</text>
+                <text x="125" y="220" text-anchor="middle" id="-r2">-R/2</text>
+                <text x="275" y="220" text-anchor="middle" id="r2">R/2</text>
+                <text x="350" y="220" text-anchor="middle" id="r">R</text>
+                <!-- Значения R на оси Y -->
+                <text x="190" y="54" text-anchor="end" id="R">R</text>
+                <text x="190" y="130" text-anchor="end" id="R2">R/2</text>
+                <text x="190" y="280" text-anchor="end" id="-R2">-R/2</text>
+                <text x="190" y="355" text-anchor="end" id="-R">-R</text>
+            </svg>
+        </div>
+
+        <section class="user-input">
+            <form id="form" onsubmit="update(); return false;">
+                <div class="values">
+
+                    <!--селектор выбора для X-->
+                    <label>Введите значение X:</label>
+                    <div class="x-values" id="x-values">
+                        <input type="checkbox" name="x-value" id="x1" value="-2" onclick="xValue('-2')">
+                        <label for="x1">-2</label>
+                        <input type="checkbox" name="x-value" id="x2" value="-1.5" onclick="xValue('-1.5')">
+                        <label for="x2">-1.5</label>
+                        <input type="checkbox" name="x-value" id="x3" value="-1" onclick="xValue('-1')">
+                        <label for="x3">-1</label>
+                        <input type="checkbox" name="x-value" id="x4" value="-0.5" onclick="xValue('-0.5')">
+                        <label for="x4">-0.5</label>
+                        <input type="checkbox" name="x-value" id="x5" value="0" onclick="xValue('0')">
+                        <label for="x5">0</label>
+                        <input type="checkbox" name="x-value" id="x6" value="0.5" onclick="xValue('0.5')">
+                        <label for="x6">0.5</label>
+                        <input type="checkbox" name="x-value" id="x7" value="1" onclick="xValue('1')">
+                        <label for="x7">1</label>
+                        <input type="checkbox" name="x-value" id="x8" value="1.5" onclick="xValue('1.5')">
+                        <label for="x8">1.5</label>
+                        <input type="checkbox" name="x-value" id="x9" value="2" onclick="xValue('2')">
+                        <label for="x9">2</label>
+                    </div>
+                    <script>
+                        $('#x-values input:checkbox').click(function () {
+                            if ($(this).is(':checked')) {
+                                $('#x-values input:checkbox').not(this).prop('checked', false);
+                            }
+                        });
+                    </script>
+
+                    <div class="y-values">
+                        <label for="y-value">Введите значние Y:</label><br>
+                        <input type="text" class="y-text" placeholder="Число от -3 до 3" maxlength="10" id="y-value"
+                               name="y-value" oninput="validateTextField()" required>
+                    </div>
+
+                    <!--селектор выбора для R-->
+                    <label>Введите значние R:</label>
+                    <div class="r-values" id="r-values">
+                        <input type="checkbox" name="r-value" id="r1" value="1" onclick="rValue(value, id)">
+                        <label for="r1">1</label>
+                        <input type="checkbox" name="r-value" id="r22" value="1.5" onclick="rValue(value, id)">
+                        <label for="r22">1.5</label>
+                        <input type="checkbox" name="r-value" id="r3" value="2" onclick="rValue(value, id)">
+                        <label for="r3">2</label>
+                        <input type="checkbox" name="r-value" id="r4" value="2.5" onclick="rValue(value, id)">
+                        <label for="r4">2.5</label>
+                        <input type="checkbox" name="r-value" id="r5" value="3" onclick="rValue(value, id)">
+                        <label for="r5">3</label>
+                    </div>
+                    <script>
+                        $('#r-values input:checkbox').click(function () {
+                            if ($(this).is(':checked')) {
+                                $('#r-values input:checkbox').not(this).prop('checked', false);
+                            }
+                        });
+                    </script>
+                </div>
+
+                <div class="buttons">
+                    <input id="reset" type="reset" value="Сбросить" onclick="cleanFields()">
+                    <input id="submit" type="submit" value="Потвердить">
+                </div>
+            </form>
+        </section>
+    </section>
+
+    <!--Секция вывода ошибок-->
+    <div class="pop_up" id="pop_up">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_body">
+                <div class="close_pop_up" id="close_pop_up"><p>[close]</p></div>
+                <p>hello MF</p>
+                <div class="pop_up_text">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Секция таблицы-->
+    <section class="table">
+        <table id="table">
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Текущие время</th>
+                <th>Время запуска</th>
+                <th>Результат</th>
+            </tr>
+        </table>
+        <button type="reset" id="clean-table-button" onclick="cleanTable()">
+            <img src="../resource/trash-2-svgrepo-com.svg" height="35px">
+        </button>
+    </section>
+
+</div>
+<footer>
+
+</footer>
+
+<script src="../js/Validator.js"></script>
+<script src="../js/TableController.js" defer></script>
+<script src="../js/Updater.js"></script>
+</body>
+
+</html>
